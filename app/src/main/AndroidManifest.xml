@@ -15,8 +15,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
         </activity>
-        <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"
-            tools:ignore="WrongManifestParent" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
