@@ -23,6 +23,26 @@ public class Note {
          this.time = time;
      }
 
+    public long getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
     public void setId(long id) {
         this.id = id;
     }
@@ -42,4 +62,5 @@ public class Note {
     public void setTime(String time) {
         this.time = time;
     }
+
 }

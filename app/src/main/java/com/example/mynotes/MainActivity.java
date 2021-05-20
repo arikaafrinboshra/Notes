@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -16,13 +17,14 @@ import android.widget.Toast;
 
 
 import java.util.Calendar;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     RecyclerView recyclerView;
-
-
+    Adapter adapter;
+    List<Note> notes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,13 @@ public class MainActivity extends AppCompatActivity {
         //setSupportActionBar(toolbar);
 
         recyclerView = findViewById(R.id.listOfNotes);
+
+        NoteDatabase db = new NoteDatabase(this);
+        notes = db.getNotes();
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new Adapter(this, notes);
+        recyclerView.setAdapter(adapter);
 
     }
 

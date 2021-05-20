@@ -29,6 +29,7 @@ public class AddNote extends AppCompatActivity {
         setContentView(R.layout.activity_add_note);
         toolbar = findViewById(R.id.toolbar);
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
+        toolbar.setBackgroundColor(getResources().getColor(R.color.purple));
         //setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("New Note");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -80,11 +81,19 @@ public class AddNote extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == R.id.delete) {
-
+            onBackPressed();
         }
         if(item.getItemId() == R.id.save) {
-
+            Note note = new Note(noteTitle.getText().toString(), noteDetails.getText().toString(), todaysDate, currentTime);
+            NoteDatabase db = new NoteDatabase(this);
+            db.addNote(note);
+            onBackPressed();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }
